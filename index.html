@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=640,user-scalable=no" />
+	<title>五一问卷H5页面</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<section id="welcome" class="welcome page pageShow">
+		<img class="tree" src="img/tree.jpg" alt="树">
+		<span class="cloud"></span>
+		<span class="cloud"></span>
+		<span class="cloud"></span>
+        <div class="title"> 
+            <h1>
+                <img src="img/title.png" alt="五一E起游" />
+                <span class="shake"></span>
+            </h1>
+            <h2>
+                <img class="title2" src="img/title2.png" alt="邀您来参加" />      
+            </h2>
+        </div>
+		<div class="logo">
+			<img src="img/logo.png" alt="logo" />
+		</div>
+    </section>
+    <section id="thanks" class="thanks page">
+        <h2>
+            <img src="img/tranks2.png" alt="感谢">
+        </h2>
+        <img class="tree" src="img/tree.jpg" alt="树">
+        <span class="cloud"></span>
+        <span class="cloud"></span>
+        <span class="cloud"></span>
+        <input type="button" class="btn submit" value="重新评价">
+    </section>
+    <div id="index" class="index page pageShow">
+    	<div class="pic-list">
+    		<ul class="clearfix">
+    			<li>
+    			    <img src="img/1.jpg" alt="九寨沟">
+    			</li>
+    			<li>
+    			    <img src="img/2.jpg" alt="樱花">
+    			</li>
+    			<li>
+    			    <img src="img/3.jpg" alt="狗狗">
+    			</li>
+    			<li>
+    			    <img src="img/4.jpg" alt="树木">
+    			</li>
+    			<li>
+    			    <img src="img/5.jpg" alt="湖泊">
+    			</li>
+    			<span class="info">成都九寨沟景区</span>
+    		</ul>
+    		<a class="news" href="javascript:;">
+    			<em>新闻线索</em>
+    			<span></span>
+    			<span></span>
+    			<span></span>
+    		</a>
+    		<div class="buttons">
+    			<span></span>
+    			<span></span>
+    			<span></span>
+    			<span></span>
+    			<span></span>
+    		</div>
+    	</div>
+    	<section class="score" id="score">
+    		<h2>给景区评分</h2>
+    		<ul>
+    			<li class="clearfix" >
+    				<h3>综合印象</h3>
+    				<div class="stars">
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+                        <input type="hidden" value="0" />
+    				</div>
+    			</li>
+    			<li class="clearfix">
+    				<h3>服务指数</h3>
+    				<div class="stars">
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+                        <input type="hidden" value="0" />
+    				</div>
+    			</li>
+   				<li class="clearfix">
+    				<h3>消费指数</h3>
+    				<div class="stars">
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+    					<span></span>
+                        <input type="hidden" value="0" />
+    				</div>
+    			</li>
+    		</ul>
+    	</section>
+    	<section id="indexTags" class="tags">
+    		<h2>给景区添加标签</h2>
+            <label>
+                <input type="checkbox" name="tags" value="服务好">
+                <span>服务好</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="景色赞">
+                <span>景色赞</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="千篇一律">
+                <span>千篇一律</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+             <label>
+                <input type="checkbox" name="tags" value="服务好">
+                <span>服务好</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="景色赞">
+                <span>景色赞</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="千篇一律">
+                <span>千篇一律</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+    	</section>
+        <span class="hint"></span>
+    	<input id="indexBtn" class="btn submit" type="button" value="提交" />
+    </div>
+    <section id="mask" class="page mask"></section>
+    <section id="news" class="news page">
+        <h2>
+            <img src="img/news.png" alt="">
+        </h2>
+        <p class="info">请上传旅游以及突发事件线索</p>
+        <label class="file">
+            <input type="file" />
+            <span>导入视频</span>
+        </label>
+        <label class="file">
+            <input type="file">
+            <span>上传照片</span>
+        </label>
+    </section>
+    <div class="video-info page">
+        <section class="tags">
+            <h2>给视频添加标签</h2>
+            <label>
+                <input type="checkbox" name="tags" value="服务好">
+                <span>服务好</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="景色赞">
+                <span>景色赞</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="千篇一律">
+                <span>千篇一律</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+             <label>
+                <input type="checkbox" name="tags" value="服务好">
+                <span>服务好</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="景色赞">
+                <span>景色赞</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="千篇一律">
+                <span>千篇一律</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="看人海">
+                <span>看人海</span>
+            </label>
+            <label>
+                <input type="checkbox" name="tags" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+        </section>
+        <textarea name="comment" id="comment" rows="5" placeholder="（选填：说点什么呢～～）"></textarea>
+        <input class="tel" type="text" placeholder="留个电话吧!">
+        <input class="btn" type="button" value="上传">
+    </div>
+<script src="js/main.js"></script>
+<script>
+    fnLoad();
+</script>
+</body>
+</html>
