@@ -54,7 +54,8 @@ input,textarea{
  ```
  就可以干掉手机safari下独有的这个bug哈哈哈哈。    
  今晚等室友回来再用她的6测试一下，看一下是不是我手机系统太老的问题.   
- 填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行 
+ 填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行   
+ vivo浏览器测试正常 
 
 ## to do
 首先一鼓作气把效果全部用自己的思路实现一遍，然后反复去优化代码。
