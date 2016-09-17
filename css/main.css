@@ -8,7 +8,7 @@ input,textarea{
 	border:none;
 	margin:0;
 	padding:0;
-/*	-webkit-appearance:none; */
+	-webkit-appearance:none; 
 }
 textarea {
 	resize:none;
@@ -193,7 +193,7 @@ body {
 	width:28px;
 	height:31px;
 	background:url(../img/shake.png)  no-repeat;
-	-webkit-animation:0.3s 2s shake;
+	-webkit-animation:0.5s 2s shake;
 	-webkit-transform-origin: left bottom;
 }
 
@@ -453,13 +453,16 @@ body {
 }
 
 /*感谢页面*/
+.thanks {
+	min-height:1136px;
+}
 .thanks h2 {
 	position:absolute;
 	top:50%;
-	transform:translateY(100px);
+	-webkit-transform:translateY(100px);
 	opacity:0;
-	animation:tree 1s .3s;
-	animation-fill-mode:forwards;
+	-webkit-animation:tree 1s .3s;
+	-webkit-animation-fill-mode:forwards;
 }
 
 
