@@ -5,6 +5,12 @@
 	<meta name="viewport" content="width=640,user-scalable=no" />
 	<title>五一问卷H5页面</title>
 	<link rel="stylesheet" href="css/main.css">
+    <script src="js/move.js"></script>
+    <script>
+        window.onload = function() {
+            console.log(document.documentElement.clientHeight);
+        }
+    </script>
 </head>
 <body>
 	<section id="welcome" class="welcome page pageShow">
@@ -25,7 +31,7 @@
 			<img src="img/logo.png" alt="logo" />
 		</div>
     </section>
-    <section id="thanks" class="thanks page">
+    <section id="over" class="thanks page">
         <h2>
             <img src="img/tranks2.png" alt="感谢">
         </h2>
@@ -35,39 +41,41 @@
         <span class="cloud"></span>
         <input type="button" class="btn submit" value="重新评价">
     </section>
-    <div id="index" class="index page pageShow">
+    <div id="index" class="index page">
     	<div class="pic-list">
     		<ul class="clearfix">
     			<li>
-    			    <img src="img/1.jpg" alt="九寨沟">
+    			    <img src="img/1.jpg" alt="成都九寨沟景区">
     			</li>
     			<li>
-    			    <img src="img/2.jpg" alt="樱花">
+    			    <img src="img/2.jpg" alt="美丽的樱花">
     			</li>
     			<li>
-    			    <img src="img/3.jpg" alt="狗狗">
+    			    <img src="img/3.jpg" alt="可爱的狗狗">
     			</li>
     			<li>
-    			    <img src="img/4.jpg" alt="树木">
+    			    <img src="img/4.jpg" alt="茂密的树木">
     			</li>
     			<li>
-    			    <img src="img/5.jpg" alt="湖泊">
+    			    <img src="img/5.jpg" alt="平静的湖泊">
     			</li>
-    			<span class="info">成都九寨沟景区</span>
-    		</ul>
+            </ul>  
+            <section class="pic-mask">
+                <span class="info">成都九寨沟景区</span>
+                <nav>
+                    <a class="active" href="javscript:;"></a>
+                    <a href="javscript:;"></a>
+                    <a href="javscript:;"></a>
+                    <a href="javscript:;"></a>
+                    <a href="javscript:;"></a>
+                </nav>
+            </section>
     		<a class="news" href="javascript:;">
     			<em>新闻线索</em>
     			<span></span>
     			<span></span>
     			<span></span>
     		</a>
-    		<div class="buttons">
-    			<span></span>
-    			<span></span>
-    			<span></span>
-    			<span></span>
-    			<span></span>
-    		</div>
     	</div>
     	<section class="score" id="score">
     		<h2>给景区评分</h2>
@@ -158,11 +166,11 @@
                 <span>挤爆了</span>
             </label>
     	</section>
-        <span class="hint"></span>
-    	<input id="indexBtn" class="btn submit" type="button" value="提交" />
+        <input id="indexBtn" class="btn submit" type="button" value="提交" />
+        <p class="hint"></p>
     </div>
     <section id="mask" class="page mask"></section>
-    <section id="news" class="news page">
+    <section id="news" class="upload page">
         <h2>
             <img src="img/news.png" alt="">
         </h2>
@@ -175,62 +183,66 @@
             <input type="file">
             <span>上传照片</span>
         </label>
+        <p class="hint"></p>
     </section>
-    <div class="video-info page">
+    <div class="video-info page" id="videoInfo">
         <section class="tags">
             <h2>给视频添加标签</h2>
-            <label>
-                <input type="checkbox" name="tags" value="服务好">
-                <span>服务好</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="景色赞">
-                <span>景色赞</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="千篇一律">
-                <span>千篇一律</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="看人海">
-                <span>看人海</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="挤爆了">
-                <span>挤爆了</span>
-            </label>
-             <label>
-                <input type="checkbox" name="tags" value="服务好">
-                <span>服务好</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="景色赞">
-                <span>景色赞</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="千篇一律">
-                <span>千篇一律</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="看人海">
-                <span>看人海</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="挤爆了">
-                <span>挤爆了</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="看人海">
-                <span>看人海</span>
-            </label>
-            <label>
-                <input type="checkbox" name="tags" value="挤爆了">
-                <span>挤爆了</span>
-            </label>
+            <div id="infoLabels">
+                <label>
+                    <input type="checkbox" name="tags" value="服务好">
+                    <span>服务好</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="景色赞">
+                    <span>景色赞</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="千篇一律">
+                    <span>千篇一律</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+                 <label>
+                    <input type="checkbox" name="tags" value="服务好">
+                    <span>服务好</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="景色赞">
+                    <span>景色赞</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="千篇一律">
+                    <span>千篇一律</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+            </div>
         </section>
         <textarea name="comment" id="comment" rows="5" placeholder="（选填：说点什么呢～～）"></textarea>
         <input class="tel" type="text" placeholder="留个电话吧!">
-        <input class="btn" type="button" value="上传">
+        <input id="infoBtn" class="btn" type="button" value="上传">
+        <p class="hint"></p>
     </div>
 <script src="js/main.js"></script>
 <script>

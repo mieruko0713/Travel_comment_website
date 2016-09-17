@@ -8,6 +8,7 @@ input,textarea{
 	border:none;
 	margin:0;
 	padding:0;
+/*	-webkit-appearance:none; */
 }
 textarea {
 	resize:none;
@@ -29,6 +30,7 @@ li {
 /*基本页面设置*/
 body {
 	color:#666;
+	height:100%;
 }
 .page {
 	position:absolute;
@@ -36,7 +38,7 @@ body {
 	top:0;
 	width:100%;
 	background:#fff;
-	overflow:hidden;
+	overflow:auto;
 	height:100%;
 	display:none;
 }
@@ -53,13 +55,13 @@ body {
 
 
 /*欢迎页*/
-@keyframes tree {
+@-webkit-keyframes tree {
 	100% {
-	    transform:translateY(0);
+	    -webkit-transform:translateY(0);
 	    opacity:1;
 	}
 }
-@keyframes cloud {
+@-webkit-keyframes cloud {
 	0%
 	{
 		-webkit-transform:translateX(0px);
@@ -69,44 +71,45 @@ body {
 		-webkit-transform:translateX(-50px);
 	}
 }
-@keyframes shake {
+@-webkit-keyframes shake {
 	0% {
-		transform:rotate(-50deg);
+		-webkit-transform:rotate(-50deg);
 	}
 	10% {
-		transform:rotate(45deg);
+		-webkit-transform:rotate(45deg);
 	}
 	20% {
-		transform:rotate(-40deg);
+		-webkit-transform:rotate(-40deg);
 	}
 	30% {
-		transform:rotate(35deg);
+		-webkit-transform:rotate(35deg);
 	}
 	40% {
-		transform:rotate(-30deg);
+		-webkit-transform:rotate(-30deg);
 	}
 	50% {
-		transform:rotate(25deg);
+		-webkit-transform:rotate(25deg);
 		opacity:1;
 	}
 	60% {
-		transform:rotate(-20deg);
+		-webkit-transform:rotate(-20deg);
 	}
 	70% {
-		transform:rotate(15deg);
+		-webkit-transform:rotate(15deg);
 	}
 	80% {
-		transform:rotate(-10deg);
+		-webkit-transform:rotate(-10deg);
 	}
 	90% {
-		transform:rotate(5deg);
+		-webkit-transform:rotate(5deg);
 	}
 	100% {
-		transform:rotate(0deg);
+		-webkit-transform:rotate(0deg);
 	}
 }
 .welcome {
-	transition:.5s;
+	-webkit-transition:.5s;
+	min-height:1136px;
 }
 .tree {
 	position:absolute;
@@ -136,15 +139,15 @@ body {
 .welcome h1{
 	opacity:0;
     transform:translateY(100px);
-    animation:1s .3s tree;
-    animation-fill-mode:forwards;
+    -webkit-animation:1s .3s tree;
+    -webkit-animation-fill-mode:forwards;
 }
 .welcome h2 {
 	margin-top:20px;
 	opacity:0;
     transform:translateY(100px);
-    animation:1s .5s tree;
-    animation-fill-mode:forwards;
+    -webkit-animation:1s .5s tree;
+    -webkit-animation-fill-mode:forwards;
 }
 
 .welcome .logo {
@@ -154,8 +157,8 @@ body {
 	width:100%;
 	opacity:0;
 	transform:translateY(100px);
-	animation:1s 1s tree;
-	animation-fill-mode:forwards;
+	-webkit-animation:1s 1s tree;
+	-webkit-animation-fill-mode:forwards;
 }
 .cloud{ 
 	position:absolute; 
@@ -167,21 +170,21 @@ body {
 	top:110px;
 	width:58px;
 	height:44px; 
-	animation:cloud 3s 1s infinite alternate linear;
+	-webkit-animation:cloud 3s 1s infinite alternate linear;
 }
 .cloud:nth-of-type(2){ 
 	left:79px;
 	top:160px;
 	width:91px;
 	height:70px; 
-	animation:cloud 3s 1.5s infinite alternate linear;
+	-webkit-animation:cloud 3s 1.5s infinite alternate linear;
 }
 .cloud:nth-of-type(3){ 
 	left:402px;
 	top:210px;
 	width:54px;
 	height:41px;
-	animation:cloud 3s 1.8s infinite alternate linear;
+	-webkit-animation:cloud 3s 1.8s infinite alternate linear;
 }
 .welcome .shake {
 	position:absolute;
@@ -190,12 +193,12 @@ body {
 	width:28px;
 	height:31px;
 	background:url(../img/shake.png)  no-repeat;
-	animation:0.3s 2s shake;
-	transform-origin: left bottom;
+	-webkit-animation:0.3s 2s shake;
+	-webkit-transform-origin: left bottom;
 }
 
 /*主页样式*/
-@keyframes newsBtn
+@-webkit-keyframes newsBtn
 {
     0% { box-shadow: 0px 0px 0px 1px rgba(230,0,18,0); }
     10%{ box-shadow: 0px 0px 0px 2px rgba(230,0,18,0.1);}
@@ -214,6 +217,7 @@ body {
 }
 .pic-list ul {
     width:500%;
+    transition:0.5s;
 }
 .pic-list li {
 	float:left;
@@ -221,13 +225,7 @@ body {
 }
 .pic-list li img {
 	width:100%;
-}
-.pic-list .info {
-	position:absolute;
-	bottom:20px;
-	left:20px;
-	color:#fff;
-	font-size:30px;
+	height:350px;
 }
 .pic-list .news{
 	position:absolute;
@@ -245,14 +243,47 @@ body {
 	text-decoration:none; 
 	border-radius:39px; 
 	font-size:21px;
-	animation:newsBtn 2s alternate infinite;
+	-webkit-animation:newsBtn 2s alternate infinite;
 }
 .pic-list .news em {
     font-style:normal;
 }
+.pic-mask{
+	height:102px; 
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.9) 0,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0));background:linear-gradient(bottom,rgba(0,0,0,0.9) 0,rgba(0,0,0,0.8) 20%,rgba(0,0,0,0));
+}
+.pic-mask .info {
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	color:#fff;
+	font-size:30px;
+}
+.pic-mask nav  {
+	position:absolute;
+	right:26px;
+	bottom:30px;
+}
+.pic-mask nav a {
+	height:10px;
+	width:10px;
+	border-radius:10px;
+	float:left;
+	margin-left:15px;
+	background:#fff;
+	opacity:0.5;
+}
+.pic-mask nav .active {
+	opacity:1;
+}
 
 .index {
 	z-index:1;
+	min-height:1136px;
 }
 .index h2 {
 	font-size:28px;
@@ -351,39 +382,43 @@ body {
     transition:1s;
     opacity:0;
     z-index:3;
+    min-height:1136px;
 }
 
 /*新闻线索页面*/
-.news {
+.upload {
 	font-size:26px;
 	opacity:0;
 }
-.news {
+.upload  {
 	background:rgb(238,238,238);
 }
-.news p{
+.upload  p{
 	padding:40px 0 0 30px;
 }
-.news .file {
+.upload .file {
 	float:left;
 	width:50%;
 	background:#fff;
 }
-.news .file {
+.upload .file {
 	text-align:center;
 	box-sizing:border-box;
 	padding:120px 0 35px 0;
 	margin-top:20px;
 }
-.news label:nth-of-type(1) {
+.upload label:nth-of-type(1) {
 	border-right:1px solid #ccc;
 	background:#fff url(../img/camera1.png) no-repeat center 25%;
 }
-.news label:nth-of-type(2) {
+.upload  label:nth-of-type(2) {
 	background:#fff url(../img/camera2.png) no-repeat center 25%;
 }
-.news input {
+.upload  input {
 	display:none;
+}
+.upload .hint {
+	padding:0;
 }
 /*填写信息页面*/
 .video-info  {
