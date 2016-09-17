@@ -52,7 +52,7 @@ input,textarea{
 ```
 ![按钮图片](http://7xl4oh.com1.z0.glb.clouddn.com/79FC9D6F-7566-48BC-85DB-67DAC8B92EFF.png)    
 然后结果呢，反正不长这样，特别丑，为了说明差距很大我用手机截了个屏幕:    
-![浏览器默认样式按钮](http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6611.PNG)    
+![浏览器默认样式按钮](http://7xl4oh.com1.z0.glb.clouddn.com/22C3E7C5-59A9-42B4-858B-04F790CE5BA8.png)    
 一脸懵比，这差距大到我想不出来该去重置哪个css属性！    
 论科学上网的重要性，后来我搜出了一个办法，只需一行：
 ```css
