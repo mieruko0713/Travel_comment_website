@@ -102,9 +102,9 @@ input,textarea{
 </html>
 ``` 
 布局长这样:    
-![input](http://7xl4oh.com1.z0.glb.clouddn.com/input.png)    
+![label标签](http://7xl4oh.com1.z0.glb.clouddn.com/input.png)    
 注意我戳的位置（是戳不是点，事件名称是touchend,click的话不存在这个bug，因为click你只能点到一个点，而touch却能覆盖一小片区域了）    
-![input2](http://7xl4oh.com1.z0.glb.clouddn.com/input2.png)    
+![加了范围演示的label标签](http://7xl4oh.com1.z0.glb.clouddn.com/input2.png)    
 注意小圆点，这个小圆点（就是你戳手机的时候手指覆盖的范围）一旦有大于一半的面积滞留在label标签外面，神奇的事情就会发生，这时label标签的touch事件不会被触发，但是input的checked值会被改变，别问我为什么，浏览器非这么干，整整一个上午的测试告诉我，就是这样！    
 #### 解决办法：    
 现在我的办法是，input的checked值既然和touch事件是不同步的，那么我就不用它进行判断。在touch事件被触发的时候，我去判断一个自定义属性，这里我给input新增了一个on属性，on属性只有在touch事件触发的时候才改变，把这个地方改了之后，状态切换就变得很灵敏了。    
