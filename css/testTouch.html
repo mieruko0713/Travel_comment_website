@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testTouch</title>
+	<meta name=viewport content="width=640,user-scalable=no">
+	<style>
+		.tags {
+	padding:20px 0px 10px 40px;
+}
+.tags h2 {
+	margin-bottom:20px;
+}
+.tags label  {
+	float:left;
+	border-radius:30px;
+	border:1px solid #ccc;
+	text-align:center;
+	margin:0 10px 18px 0;
+	color:#666;
+}
+.tags label input {
+	display:none;
+}
+
+.tags span {
+	line-height:50px;
+	font-size:26px;
+	padding:0px 25px;
+}
+.tags .active{
+	background:#3c9bbb;
+	color:#fff;
+}
+	</style>
+	<script>
+	function addClass(obj,sClass) {
+	if(!obj.className) {
+		obj.className = sClass;
+		return ;
+	} 
+	var aClass = obj.className.split(" ");
+	for(var i=0;i<aClass.length;i++) {
+		if(aClass[i]==sClass){
+			return ;
+		}
+	}
+	obj.className += " " + sClass;
+} 
+function removeClass(obj,sClass) {
+	if(!obj.className) {
+		return ;
+	}
+	var aClass = obj.className.split(" ");
+	for(var i=0;i<aClass.length;i++) {
+		if(aClass[i]==sClass){
+			aClass.splice(i,1);
+			obj.className = aClass.join(" ");
+			return ;
+		}
+	}
+	console.log("失败")
+}
+
+		window.onload= function() {
+			var aTags = document.getElementsByTagName("label");
+			// var oInput  = document.getElementById("input");
+			// oInput.addEventListener("touchend",function(){
+			// 	console.log(this.checked);
+			// });
+			var oInfoLabels = document.getElementById("infoLabels");
+			var onTag = 0;
+			function fnTag() {
+    	for(var i=0;i<aTags.length;i++) {
+    		var checked = aTags[i].getElementsByTagName("input")[0].on;
+    		if(checked) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+		oInfoLabels.addEventListener("touchend",function(event){
+    	console.log(event.target.previousElementSibling);
+		if(event.target.tagName == "SPAN"){
+    		if(!event.target.previousElementSibling.checked){
+    			console.log(event.target.previousElementSibling.checked);
+    			addClass(event.target.parentNode,"active");
+    			onTag ++ ;
+    			console.log("span的:"+onTag);
+    		} else {
+    			removeClass(event.target.parentNode,"active");
+    			onTag--;
+    			console.log("span的:"+onTag);
+    		}
+    	} else if (event.target.tagName == "LABEL"){
+    		console.log(event.target.children[0]);
+    		console.log(event.target.children[0].checked);
+    		if(!event.target.children[0].checked){
+    			addClass(event.target,"active");
+    			onTag ++;
+    			console.log("label的:"+onTag);
+
+    		} else {
+    			onTag--;
+    			removeClass(event.target,"active");
+    			console.log("label的:"+onTag);
+    			console.log(event.target.children[0].checked);
+    		}
+    	}
+    	// if(fnTag()) {
+    	// 	addClass(oBtn,"submit");
+    	// } else {
+    	// 	removeClass(oBtn,"submit");
+    	// }
+    	return false;
+    });
+		}
+	</script>
+</head>
+<body>
+	<section class="tags">
+            <h2>给视频添加标签</h2>
+            <div id="infoLabels">
+                <label>
+                    <input type="checkbox" name="tags" value="服务好">
+                    <span>服务好</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="景色赞">
+                    <span>景色赞</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="千篇一律">
+                    <span>千篇一律</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+                 <label>
+                    <input type="checkbox" name="tags" value="服务好">
+                    <span>服务好</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="景色赞">
+                    <span>景色赞</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="千篇一律">
+                    <span>千篇一律</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="看人海">
+                    <span>看人海</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="tags" value="挤爆了">
+                    <span>挤爆了</span>
+                </label>
+            </div>
+</body>
+</html>

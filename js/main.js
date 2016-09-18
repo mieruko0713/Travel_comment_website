@@ -172,19 +172,30 @@ function fnIndex() {
 		});
 	}
 	// 给标签添加点击事件
-	bind(oIndexTags,"click",function(){
-    	if(event.target.tagName == "SPAN" || event.target.tagName == "INPUT") {
-    		addClass(event.target.parentNode,"active");
-    	} else {
-    		return ;
+	 bind(oIndexTags,"touchend",function(event){
+		if(event.target.tagName == "SPAN"){
+    		if(!event.target.previousElementSibling.checked){
+    			addClass(event.target.parentNode,"active");
+    			event.target.previousElementSibling.on = true;
+    		} else {
+    			removeClass(event.target.parentNode,"active");
+    			event.target.previousElementSibling.on = false;
+    		}
+    	} else if (event.target.tagName == "LABEL"){
+    		if(!event.target.children[0].checked){
+    			addClass(event.target,"active");
+    			event.target.children[0].on = true;
+    		} else {
+    			removeClass(event.target,"active");
+    			event.target.children[0].on = false;
+    		}
     	}
+    	return false;
     });
 	function fnScore() {
 		for(var i = 0 ;i<aScore.length;i++) {
 			var inputValue = aScore[i].getElementsByTagName("input")[0].value;
-			console.log(inputValue);
 			if(inputValue == 0) {
-				console.log(inputValue);
 				return false;
 			}
 		}
@@ -192,14 +203,14 @@ function fnIndex() {
 	}
 	function fnTags() {
 		for(var i=0;i<aTags.length;i++) {
-			var checked = aTags[i].getElementsByTagName("input")[0].checked;
+			var checked = aTags[i].getElementsByTagName("input")[0].on;
 			if(checked) {
 				return true;
 			}
 		}
 		return false;
 	}
-    bind(oIndexBtn,"click",function() {
+    bind(oIndexBtn,"touchend",function() {
     	// if()
     	
     	// 验证checkbox可以顺利输出
@@ -268,30 +279,51 @@ function fnVideoInfo() {
     var aTags = oVideoInfo.getElementsByTagName("label");
     var oBtn = document.getElementById("infoBtn");
     var oInfo = getByClass(oVideoInfo,"hint")[0];
-    var onTag = false;
     var oInfoLabels = document.getElementById("infoLabels");
-    bind(oInfoLabels,"click",function(){
-    	if(event.target.tagName == "SPAN" || event.target.tagName == "INPUT") {
-    		addClass(event.target.parentNode,"active");
-    	} else {
-    		return ;
+    function fnTag() {
+    	for(var i=0;i<aTags.length;i++) {
+    		var checked = aTags[i].getElementsByTagName("input")[0].on;
+    		if(checked) {
+    			return true;
+    		}
     	}
-    	addClass(oBtn,"submit");
-    	onTag = true;
-    });
-    bind(oBtn,"click",function() {
-    	if(!onTag){
-    		fnInfo(oInfo,"请选择标签^_^");
-    	} else {
-    		fnOver();
+    	return false;
+    }
+    bind(oInfoLabels,"touchend",function(event){
+    	console.log(event.target.tagName);
+		if(event.target.tagName == "SPAN"){
+    		if(!event.target.previousElementSibling.checked){
+    			addClass(event.target.parentNode,"active");
+    			event.target.previousElementSibling.on = true;
+    		} else {
+    			removeClass(event.target.parentNode,"active");
+    			event.target.previousElementSibling.on = false;
+    		}
+    	} else if (event.target.tagName == "LABEL"){
+    		if(!event.target.children[0].checked){
+    			addClass(event.target,"active");
+    			event.target.children[0].on = true;
+    		} else {
+    			removeClass(event.target,"active");
+    			event.target.children[0].on = false;
+    		}
     	}
+    	if(fnTag()) {
+    		addClass(oBtn,"submit");
+    	} else {
+    		removeClass(oBtn,"submit");
+    	}
+    	return false;
     });
+    bind(oBtn,"touchend",function() {
+    	fnOver();
+    })
 }
 function fnOver() {
 	var oBtn = oOver.getElementsByTagName("input")[0];
 	removeClass(oVideoInfo,"pageShow");
 	addClass(oOver,"pageShow");
-	bind(oBtn,"click",function() {
+	bind(oBtn,"touchend",function() {
 		removeClass(oOver,"pageShow");
 		addClass(oIndex,"pageShow");
 	});

@@ -55,7 +55,62 @@ input,textarea{
  就可以干掉手机safari下独有的这个bug哈哈哈哈。    
  今晚等室友回来再用她的6测试一下，看一下是不是我手机系统太老的问题.   
  填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行   
- vivo浏览器测试正常 
+ vivo浏览器测试正常(是的我把室友的手机全试了一遍啊哈哈哈)    
+
+### 大坑    
+大坑就是搞了很久才搞明白而且非常诡异的坑，今天上午我就遇到一个.    
+#### label标签里被隐藏的input会骗人   
+这个事情不单独搞出来讲绝对不能解恨，项目里面我在标签选择那一块写了一个事件委托，如果用户戳到span或者label标签那么就去判断input(input我设置了display:none)的checked属性,如果checked属性为真，那么label标签就去掉active状态，反之加上active状态，从而实现一个状态切换的效果。    
+思路看起来好像没问题，但是在我操作的过程中会出现我明明点上了label，但是不变色的现象(active状态是要变色的)，为此，我测试了那一块代码我能测试的几乎所有地方，但是就是改不掉。后来干脆单独写了个demo来检查label标签，它的狐狸尾巴就露出来了:    
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <meta name="viewport" content="width=200">
+    <style>
+        label {
+            border:1px solid black;
+            padding:10px;
+            margin:10px;
+        }
+        input {
+            display:none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oLabel = document.getElementsByTagName("label")[0];
+            oLabel.addEventListener("touchend",function(event){
+                var oInput = document.getElementsByTagName("input")[0];
+                console.log(oInput.checked);
+                console.log(event.target);
+            });
+            document.addEventListener("touchend",function(event) {
+                console.log(event.target.tagName);
+            })
+        }
+    </script>
+</head>
+<body>  
+    <label>
+        <input type="checkbox">
+        <span>测试</span>
+    </label>
+</body>
+</html>
+``` 
+布局长这样:    
+![input](http://7xl4oh.com1.z0.glb.clouddn.com/input.png)
+注意我戳的位置（是戳不是点，事件名称是touchend,click的话不存在这个bug，因为click你只能点到一个点，而touch却能覆盖一小片区域了）    
+![input2](http://7xl4oh.com1.z0.glb.clouddn.com/input2.png)    
+注意小圆点，这个小圆点（就是你戳手机的时候手指覆盖的范围）一旦有大于一半的面积滞留在label标签外面，神奇的事情就会发生，这时label标签的touch事件不会被触发，但是input的checked值会被改变，别问我为什么，浏览器非这么干，整整一个上午的测试告诉我，就是这样！    
+#### 解决办法：    
+现在我的办法是，input的checked值既然和touch事件是不同步的，那么我就不用它进行判断。在touch事件被触发的时候，我去判断一个自定义属性，这里我给input新增了一个on属性，on属性只有在touch事件触发的时候才改变，把这个地方改了之后，状态切换就变得很灵敏了。    
+
+
+ 
 
 ## to do
 首先一鼓作气把效果全部用自己的思路实现一遍，然后反复去优化代码。
