@@ -148,6 +148,9 @@ body {
     transform:translateY(100px);
     -webkit-animation:1s .5s tree;
     -webkit-animation-fill-mode:forwards;
+    text-align:center;
+    font-size:40px;
+    line-height:60px;
 }
 
 .welcome .logo {
@@ -458,11 +461,17 @@ body {
 }
 .thanks h2 {
 	position:absolute;
+	width:100%;
 	top:50%;
 	-webkit-transform:translateY(100px);
 	opacity:0;
 	-webkit-animation:tree 1s .3s;
 	-webkit-animation-fill-mode:forwards;
+	text-align:center;
+}
+.thanks h2 p {
+	font-size:36px;
+	line-height:60px;
 }
 
 
