@@ -56,8 +56,17 @@ function fnInfo(obj, str) {
 	obj.innerHTML = str;
 	obj.style.opacity = 1;
 	obj.style.WebkitTransform = "scale(1)";
+	obj.style.MozTransform = "scale(1)";
+	obj.style.OTransform = "scale(1)";
+	obj.style.MsTransform = "scale(1)";
+	obj.style.transform = "scale(1)";
 	setTimeout(function(){
 		obj.style.WebkitTransform = "scale(0)";
+		obj.style.WebkitTransform = "scale(0)";
+	    obj.style.MozTransform = "scale(0)";
+	    obj.style.OTransform = "scale(0)";
+	    obj.style.MsTransform = "scale(0)";
+	    obj.style.transform = "scale(0)";
 	},1000);
 }
 // 页面内容设置
@@ -72,24 +81,24 @@ function fnLoad() {
 	}
 }
 function fnIndex() {
-	var oIndexBtn = document.getElementById("indexBtn");
-	var oScore = document.getElementById("score");
-	var aScore = getByClass(oScore,"stars");
-	var oIndexTags = document.getElementById("indexTags")
-	var aTags = indexTags.getElementsByTagName("label");
-	var oInfo  = getByClass(oIndex,"hint")[0];
-	var oPic = getByClass(oIndex,"pic-list")[0].getElementsByTagName("ul")[0];
-	var oPicInfo = getByClass(oIndex,"info")[0];
-	var aA = oIndex.getElementsByTagName("nav")[0].getElementsByTagName("a");
-	var aImg = oIndex.getElementsByTagName("img");
-	var timer;
-	var iNow=1;
-	var width = document.documentElement.clientWidth;
-	var iX=0;
-	var iStartX=0;
-	var iEndX=0;
-	var iDis;
-	var onTag;
+	var oIndexBtn = document.getElementById("indexBtn"),
+	    oScore = document.getElementById("score"),
+	    aScore = getByClass(oScore,"stars"),
+	    oIndexTags = document.getElementById("indexTags"),
+	    aTags = indexTags.getElementsByTagName("label"),
+	    oInfo  = getByClass(oIndex,"hint")[0],
+	    oPic = getByClass(oIndex,"pic-list")[0].getElementsByTagName("ul")[0],
+	    oPicInfo = getByClass(oIndex,"info")[0],
+	    aA = oIndex.getElementsByTagName("nav")[0].getElementsByTagName("a"),
+	    aImg = oIndex.getElementsByTagName("img"),
+	    timer,
+	    iNow=1,
+	    width = document.documentElement.clientWidth,
+	    iX=0,
+	    iStartX=0,
+	    iEndX=0,
+	    iDis,
+	    onTag;
 	addClass(oIndex,"pageShow");
 	autoPlay();
 	// 让图片运动起来
@@ -123,12 +132,16 @@ function fnIndex() {
 		} else if (iX>0) {
 			iX = 0;
 		}
+		oPic.style.Webkitransform = "translateX(" + iX + "px)";
+		oPic.style.Moztransform = "translateX(" + iX + "px)";
+		oPic.style.Otransform = "translateX(" + iX + "px)";
+		oPic.style.Mstransform = "translateX(" + iX + "px)";
 		oPic.style.transform = "translateX(" + iX + "px)";
 	}
 	function tabEnd(event) {
 		iNow = -Math.round(iX / width);
 		if(iNow>aImg.length-1) {
-			iNow = aImg.length-1
+			iNow = aImg.length-1;
 		} else if (iNow < 0) {
 			iNow = 0;
 		}
@@ -163,7 +176,7 @@ function fnIndex() {
 				for(var i=0;i<aStars.length;i++) {
 					removeClass(aStars[i],"active");
 				}
-				for(var i=0;i<=event.target.index;i++) {
+				for(i=0;i<=event.target.index;i++) {
 					addClass(aStars[i],"active");
 					oInput.value = event.target.index + 1;
 				}
@@ -195,7 +208,7 @@ function fnIndex() {
 	function fnScore() {
 		for(var i = 0 ;i<aScore.length;i++) {
 			var inputValue = aScore[i].getElementsByTagName("input")[0].value;
-			if(inputValue == 0) {
+			if(inputValue === 0) {
 				return false;
 			}
 		}
@@ -238,14 +251,25 @@ function fnIndexOut() {
 	addClass(oMask,"pageShow");
 	fnNews();
     oIndex.style.WebkitFilter="blur(5px)";
+    oIndex.style.MozFilter="blur(5px)";
+    oIndex.style.OFilter="blur(5px)";
+    oIndex.style.MsFilter="blur(5px)";
     oIndex.style.filter="blur(5px)";
     oNews.style.transition="0.5s";
+    oNews.style.WebkitTransition="0.5s";
+    oNews.style.MozTransition="0.5s";
+    oNews.style.MsTransition="0.5s";
+    oNews.style.OTransition="0.5s";
     setTimeout(function(){
     	oMask.style.opacity=1;
     },14);
     setTimeout(function(){
     	removeClass(oIndex,"pageShow");
-	    oIndex.style.WebkitFilter=oIndex.style.filter="blur(0px)";	
+	    oIndex.style.WebkitFilter="blur(0px)";
+        oIndex.style.MozFilter="blur(0px)";
+        oIndex.style.OFilter="blur(0px)";
+        oIndex.style.MsFilter="blur(0px)";
+        oIndex.style.filter="blur(0px)";
 	    oNews.style.opacity=1;
 	    removeClass(oMask,"pageShow");
 	},3000);
@@ -259,14 +283,14 @@ function fnNews(){
 		} else{
 			fnInfo(oInfo,"请上传视频");
 		}
-	}
+	};
 	aInput[1].onchange = function() {
 		if(this.files[0].type.split("/")[0] == "image") {
 			fnNewsOut();
 		} else{
 			fnInfo(oInfo,"请上传图片");
 		}
-	}
+	};
 }
 function fnNewsOut() {
 	oNews.style.cssText = "";
@@ -317,7 +341,7 @@ function fnVideoInfo() {
     });
     bind(oBtn,"touchend",function() {
     	fnOver();
-    })
+    });
 }
 function fnOver() {
 	var oBtn = oOver.getElementsByTagName("input")[0];
